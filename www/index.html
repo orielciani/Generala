@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui, viewport-fit=cover">
+  <meta name="theme-color" content="#007aff">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <title>mi generala re piola</title>
+  <link rel="stylesheet" href="lib/framework7/css/framework7.bundle.css">
+  <link rel="stylesheet" href="css/icons.css">
+  <link rel="stylesheet" href="css/app.css">
+</head>
+<body class="theme-dark">
+  <div id="app">
+    <!-- Left panel with cover effect-->
+    <div class="panel panel-left panel-cover theme-dark panel-init">
+      <div class="view">
+        <div class="page">
+          <div class="navbar">
+            <div class="navbar-bg"></div>
+            <div class="navbar-inner">
+              <div class="title">Left Panel</div>
+            </div>
+          </div>
+          <div class="page-content">
+            <div class="block">Left panel content goes here</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Your main view, should have "view-main" class -->
+    <div class="view view-main view-init safe-areas">
+      <div class="page" data-name="home">
+        <!-- Top Navbar -->
+        <div class="navbar navbar-large">
+          <div class="navbar-bg"></div>
+          <div class="navbar-inner">
+            <div class="left">
+              <a href="#" class="link icon-only panel-open" data-panel="left">
+                <i class="icon f7-icons if-not-md">menu</i>
+                <i class="icon material-icons if-md">menu</i>
+              </a>
+            </div>
+            <div class="title sliding">My App</div>
+            <div class="title-large">
+              <div class="title-large-text">Anotador Generala</div>
+            </div>
+          </div>
+        </div>
+        <!-- Scrollable page content-->
+        <div class="page-content">
+          <div class="block block-strong">
+            <div class="list no-hairlines-md">
+              <ul>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Equipo 1</div>
+                    <div class="item-input-wrap">
+                      <input type="text" placeholder="Nombre" id="J1" maxlength="10">
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+                <li class="item-content item-input">
+                  <div class="item-inner">
+                    <div class="item-title item-label">Equipo 2</div>
+                    <div class="item-input-wrap">
+                      <input type="text" placeholder="Nombre" id="J2" maxlength="10">
+                      <span class="input-clear-button"></span>
+                    </div>
+                  </div>
+                </li>
+              </ul>   
+            </div>
+          </div>
+          <div class="block">
+            <div class="row">
+            <div class="col-33"></div>
+            <div class="col-33"></div>
+            <div class="col-33"><a href="/anotador/" data-view=".page-content"><button class="col button button-fill button-round" id="iniciar">Iniciar</button></a></div>
+          </div>
+          </div>    
+          <div class="fab fab-extended fab-center-bottom color-green">
+            <a class="button popup-open" href="#" data-popup=".popup-ayuda">
+            <div class="fab-text">Ayuda</div>
+            </a>
+          </div>
+        </div>
+        <!-- Aca salgo del page-content -->
+        <div class="popup popup-ayuda" style="background-color: black">
+          <div class="block block-strong">
+          <p>Titulo</p>
+          <p><a class="link popup-close" href="#">Cerrar ayuda</a></p>
+          <p>Texto normal supongo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<script src="lib/framework7/js/framework7.bundle.min.js"></script>
+<script src="js/cordova-app.js"></script>
+<script src="js/routes.js"></script>
+<script src="js/my-app.js"></script>
+</body>
+</html>

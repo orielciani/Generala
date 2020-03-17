@@ -1,0 +1,9 @@
+/assets-src
+/hooks
+/node_modules
+/platforms
+/plugins
+/res
+config.xml
+package.json
+README.md
