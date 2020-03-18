@@ -39,12 +39,40 @@ var mainView = app.views.create('.view-main');
     var dadosPoker = [40, 45, "-", "X"];
     var dadosGenerala = [50, 55, "-", "X"];
     var dadosDoblegenerala = [100, 105, "-", "X"];
-var i = 0;
 
 // DOM events for About popover
 $$('.popover-popover2').on('popover:open', function (e) {  });
 $$('.popover-popover2').on('popover:opened', function (e) {  });
-
+var ac6 = app.actions.create({
+  grid: true,
+  buttons: [
+    [
+      {
+        text: 'Button 1',
+      },
+      {
+        text: 'Button 2',
+      },
+      {
+        text: 'Button 3',
+      },
+    ],
+    [
+      {
+        text: 'Button 4',
+      },
+      {
+        text: 'Button 5',
+      },
+      {
+        text: 'Button 6',
+      },
+    ]
+  ]
+});
+$$('.ac-6').on('click', function () {
+    ac6.open();
+});
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
@@ -55,65 +83,6 @@ $$(document).on('deviceready', function() {
 $$(document).on('page:init', function (e) {
     // Do something here when page loaded and initialized
     console.log(e);
-
-    $$('.open-vertical').on('click', function () {
-  app.dialog.create({
-    title: 'Puntajes: ',
-    buttons: [
-      {
-        text: '1',
-      },
-      {
-        text: '2',
-      },
-      {
-        text: '3',
-      },
-      {
-        text: '4',
-      },
-      {
-        text: '5',
-      },
-      {
-        text: '-',
-      },
-      {
-        text: 'X',
-      },
-    ],
-    onClick: function (dialog, index) {
-            if(index === 0){
-              $$("#d1_1").text(dados1[0]);
-            }
-            else if(index === 1){
-                //Button 2 clicked
-                $$("#d1_1").text(dados1[1]);
-            }
-            else if(index === 2){
-                //Button 3 clicked
-                $$("#d1_1").text(dados1[2]);
-            }
-            else if(index === 3){
-                //Button 3 clicked
-                $$("#d1_1").text(dados1[3]);
-            }
-            else if(index === 4){
-                //Button 3 clicked
-                $$("#d1_1").text(dados1[4]);
-            }
-            else if(index === 5){
-                //Button 3 clicked
-                $$("#d1_1").text(dados1[5]);
-            }
-             else if(index === 6){
-                //Button 3 clicked
-                $$("#d1_1").text(dados1[6]);
-            }
-        },
-    verticalButtons: true,
-  }).open();
-});
 })
 // aca termina el Dialog
 $$("#popover1").on("click", function() {popover(0)});
@@ -136,6 +105,7 @@ $$("#6popover").on("click", function() {popover2(5)});
 $$("#7popover").on("click", function() {popover2(6)});
 function popover2(n) {
   $$("#d3_1").text(dados3[n])
+  
 }
 
 
@@ -147,5 +117,23 @@ $$(document).on('page:init', '.page[data-name="about"]', function (e) {
     if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
     if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
     // Vertical Buttons
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 })

@@ -7047,7 +7047,7 @@ html.with-modal-popup-push .framework7-root > .view {
 .actions-modal {
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 50%;
   z-index: 13500;
   width: 100%;
   transform: translate3d(0, 100%, 0);
