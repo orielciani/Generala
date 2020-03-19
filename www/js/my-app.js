@@ -153,13 +153,19 @@ $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
 
     // capturar el boton seleccionado del popover
     var popSeleccion = "";
-$$('popover1').on('click',function(){popSeleccion = "1";});
-$$('popover2').on('click',function(){popSeleccion = "2";});
-$$('popover3').on('click',function(){popSeleccion = "3";});
-$$('popover4').on('click',function(){popSeleccion = "4";});
-$$('popover5').on('click',function(){popSeleccion = "5";});
-$$('popover6').on('click',function(){popSeleccion = "-";});
-$$('popover7').on('click',function(){popSeleccion = "X";});
+$$('#popover1').on('click',function(){popSeleccion = "1"; console.log(popSeleccion); app.popover.close();});
+$$('#popover2').on('click',function(){popSeleccion = "2"; console.log(popSeleccion); app.popover.close();});
+$$('#popover3').on('click',function(){popSeleccion = "3"; console.log(popSeleccion); app.popover.close();});
+$$('#popover4').on('click',function(){popSeleccion = "4"; console.log(popSeleccion); app.popover.close();});
+$$('#popover5').on('click',function(){popSeleccion = "5"; console.log(popSeleccion); app.popover.close();});
+$$('#popover6').on('click',function(){popSeleccion = "-"; console.log(popSeleccion); app.popover.close();});
+$$('#popover7').on('click',function(){popSeleccion = "X"; console.log(popSeleccion); app.popover.close();});
+
+$$('#servido').on('click',function(){popSeleccion = "servido"; console.log(popSeleccion); app.popover.close();});
+$$('#noServido').on('click',function(){popSeleccion = "no servido"; console.log(popSeleccion); app.popover.close();});
+$$('#juegoCancela').on('click',function(){popSeleccion = "-"; console.log(popSeleccion); app.popover.close();});
+$$('#juegoAnula').on('click',function(){popSeleccion = "X"; console.log(popSeleccion); app.popover.close();});
+
 
 
 
