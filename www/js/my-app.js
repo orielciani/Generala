@@ -40,39 +40,7 @@ var mainView = app.views.create('.view-main');
     var dadosGenerala = [50, 55, "-", "X"];
     var dadosDoblegenerala = [100, 105, "-", "X"];
 
-// DOM events for About popover
-$$('.popover-popover2').on('popover:open', function (e) {  });
-$$('.popover-popover2').on('popover:opened', function (e) {  });
-var ac6 = app.actions.create({
-  grid: true,
-  buttons: [
-    [
-      {
-        text: 'Button 1',
-      },
-      {
-        text: 'Button 2',
-      },
-      {
-        text: 'Button 3',
-      },
-    ],
-    [
-      {
-        text: 'Button 4',
-      },
-      {
-        text: 'Button 5',
-      },
-      {
-        text: 'Button 6',
-      },
-    ]
-  ]
-});
-$$('.ac-6').on('click', function () {
-    ac6.open();
-});
+
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
     console.log("Device is ready!");
@@ -83,7 +51,16 @@ $$(document).on('deviceready', function() {
 $$(document).on('page:init', function (e) {
     // Do something here when page loaded and initialized
     console.log(e);
-})
+});
+// Option 2. Using live 'page:init' event handlers for each page
+$$(document).on('page:init', '.page[data-name="about"]', function (e) {
+    // Do something here when page with data-name="about" attribute loaded and initialized
+    console.log(e);
+    alert(dadosDoblegenerala[1]);
+    if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
+    if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
+    // Vertical Buttons
+
 // aca termina el Dialog
 $$("#popover1").on("click", function() {popover(0)});
 $$("#popover2").on("click", function() {popover(1)});
@@ -103,21 +80,24 @@ $$("#4popover").on("click", function() {popover2(3)});
 $$("#5popover").on("click", function() {popover2(4)});
 $$("#6popover").on("click", function() {popover2(5)});
 $$("#7popover").on("click", function() {popover2(6)});
-function popover2(n) {
-  $$("#d3_1").text(dados3[n])
-  
+// DOM events for About popover
+$$('.popover-popover2').on('popover:open', function (e) {
+  });
+$$('.tocaBoton').on("click", function () { 
+    idDelBoton = this.id;
+    var partes = idDelBoton.split("_");
+    p0 = partes[1];
+    p1 = partes[2];
+    console.log(p0);
+    console.log(p1);});
+
+$$('.popover-popover2').on('popover:opened', function (e) {  });
+  function popover2(n) {
+    console.log(p0);
+    console.log(p1);
+  $$("#d_" + p0 + "_" + p1).text("dados"+ p0 +"[n]");
 }
-
-
-// Option 2. Using live 'page:init' event handlers for each page
-$$(document).on('page:init', '.page[data-name="about"]', function (e) {
-    // Do something here when page with data-name="about" attribute loaded and initialized
-    console.log(e);
-    alert(dadosDoblegenerala[1]);
-    if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
-    if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
-    // Vertical Buttons
-
+//
 
 
 
