@@ -53,7 +53,7 @@ $$(document).on('page:init', function (e) {
     console.log(e);
 });
 // Option 2. Using live 'page:init' event handlers for each page
-$$(document).on('page:init', '.page[data-name="about"]', function (e) {
+$$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log(e);
     alert(dados11[1]);
@@ -61,13 +61,15 @@ $$(document).on('page:init', '.page[data-name="about"]', function (e) {
     if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
 // aca termina el popover1
 // Create dynamic Popover
+var dynamicPopover;
 $$(".dynamic-popover").on("click", function () {
     idDelBoton = this.id;
     var partes = idDelBoton.split("_");
     p0 = partes[0];
     p1 = partes[1];
     p2 = partes[2];
-var dynamicPopover = app.popover.create({
+    if (partes[1] <= 6) {
+ dynamicPopover = app.popover.create({
   targetEl: 'a.dynamic-popover',
   
   // Events
@@ -83,24 +85,58 @@ var dynamicPopover = app.popover.create({
   content: '<div class="popover">'+
               '<div class="popover-inner">'+
                 '<div class="block">'+
-                  '<p>Puntaje:' + partes[1] + '</p>'+
+                  '<p>Puntaje:</p>'+
               '<div class="row">'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="1popover">1</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="2popover">2</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="3popover">3</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="4popover">4</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[0] +'</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[1] +'</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[2] +'</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[3] +'</button></div>'+
               '</div>'+
               '<div class="row">'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="5popover">5</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round" id="6popover">-</button></div>'+
-                '<div class="col-50"><button class="col button button-fill button-round" id="7popover">Tachar</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[4] +'</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[5] +'</button></div>'+
+                '<div class="col-50"><button class="col button button-fill button-round">' + dados1[6] +'</button></div>'+
               '</div>'+
             '</div></div>'+
                   '<p><a href="#" class="link popover-close">Close me</a></p>'+
                 '</div>'+
               '</div>'+
             '</div>',
-});
+});} else {
+  dynamicPopover = app.popover.create({
+    targetEl: 'a.dynamic-popover',
+    
+    // Events
+    on: {
+      open: function (popover) {
+        console.log('Popover open');
+  
+      },
+      opened: function (popover) {
+        console.log('Popover opened');
+      },
+    },
+    content: '<div class="popover">'+
+                '<div class="popover-inner">'+
+                  '<div class="block">'+
+                    '<p>Puntaje:</p>'+
+                '<div class="row">'+
+                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[0] +'</button></div>'+
+                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[1] +'</button></div>'+
+                '</div>'+
+                '<div class="row">'+
+                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[2] +'</button></div>'+
+                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[3] +'</button></div>'+
+                '</div>'+
+              '</div></div>'+
+                    '<p><a href="#" class="link popover-close">Close me</a></p>'+
+                  '</div>'+
+                '</div>'+
+              '</div>',
+  });
+
+}
+
 // Events also can be assigned on instance later
 dynamicPopover.on('close', function (popover) {
   console.log('Popover close');
@@ -112,7 +148,7 @@ dynamicPopover.on('closed', function (popover) {
 // Open dynamic popover
 $$('.dynamic-popover').on('click', function () {
   dynamicPopover.open();
-});})
+});}) 
 
 
 
