@@ -42,56 +42,77 @@ $$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
     // Vertical Buttons
 
     // capturar el boton seleccionado del popover
-    var popSeleccion = "";
-$$('#popover1').on('click',function(){popSeleccion = "1"; console.log(popSeleccion); cambiarValor("1"); app.popover.close();});
-$$('#popover2').on('click',function(){popSeleccion = "2"; console.log(popSeleccion); cambiarValor("2"); app.popover.close();});
-$$('#popover3').on('click',function(){popSeleccion = "3"; console.log(popSeleccion); cambiarValor("3"); app.popover.close();});
-$$('#popover4').on('click',function(){popSeleccion = "4"; console.log(popSeleccion); cambiarValor("4"); app.popover.close();});
-$$('#popover5').on('click',function(){popSeleccion = "5"; console.log(popSeleccion); cambiarValor("5"); app.popover.close();});
-$$('#popover6').on('click',function(){popSeleccion = "-"; console.log(popSeleccion); cambiarValor("-"); app.popover.close();});
-$$('#popover7').on('click',function(){popSeleccion = "X"; console.log(popSeleccion); cambiarValor("X"); app.popover.close();});
+$$('#popover1').on('click',function(){popSeleccion(1); app.popover.close();});
+$$('#popover2').on('click',function(){popSeleccion(2); app.popover.close();});
+$$('#popover3').on('click',function(){popSeleccion(3); app.popover.close();});
+$$('#popover4').on('click',function(){popSeleccion(4); app.popover.close();});
+$$('#popover5').on('click',function(){popSeleccion(5); app.popover.close();});
+$$('#popover6').on('click',function(){popSeleccion("-"); app.popover.close();});
+$$('#popover7').on('click',function(){popSeleccion("X"); app.popover.close();});
 
-$$('#servido').on('click',function(){popSeleccion = "servido"; console.log(popSeleccion); cambiarValor("s");  app.popover.close();});
-$$('#noServido').on('click',function(){popSeleccion = "no servido"; console.log(popSeleccion); cambiarValor("ns");  app.popover.close();});
-$$('#juegoCancela').on('click',function(){popSeleccion = "-"; console.log(popSeleccion); cambiarValor("-");  app.popover.close();});
-$$('#juegoAnula').on('click',function(){popSeleccion = "X"; console.log(popSeleccion); cambiarValor("X");  app.popover.close();});
-var seleccionado ="";
-function cambiarValor(n) {
-      // funcion global para cambiar el valor clickeado
-$$('#'+seleccionado).text(n);
+$$('#servido').on('click',function(){popSeleccion("s"); console.log(popSeleccion); app.popover.close();});
+$$('#noServido').on('click',function(){popSeleccion("ns"); app.popover.close();});
+$$('#juegoCancela').on('click',function(){popSeleccion("-"); app.popover.close();});
+$$('#juegoAnula').on('click',function(){popSeleccion("X"); app.popover.close();});
 
 
-
-    };
+   var p1, p2;
 
 
 $$('.valor').on('click',function(){
-seleccionado = $$(this).attr('id');
+var seleccionado = $$(this).attr('id');
 console.log(seleccionado);
     var partes = seleccionado.split("_");
 
     // sabiendo la forma: d_1_1 puedo tener:
    var p0 = partes[0];
-   var p1 = partes[1];
-   var p2 = partes[2];
+    p1 = partes[1];
+    p2 = partes[2];
 console.log("celda"+" - "+p1+" jugador "+p2);
 
+});
+
+function popSeleccion(selecPop){
 // calcular el valor que se pone segun la celda seleccionada
-var valorCelda = "";
+var valorCelda;
+var res;
+console.log(p1);
+console.log(p2);
+console.log(selecPop);
+
 if(p1 == "1"){
-valorCelda == popSeleccion;
+res = selecPop;
 }else if(p1 == "2"){
-  valorCelda == parseInt(popSeleccion)*2;
-}
+  res = selecPop*2;
+}else if(p1 == "3"){
+  res = selecPop*3;
+}else if(p1 == "4"){
+  res = selecPop*4;
+}else if(p1 == "5"){
+  res = selecPop*5;
+}else if(p1 == "6"){
+  res = selecPop*6;
+}else {};
+console.log('#d_'+p1+"_"+p2);
+console.log(res);
+$$('#d_'+p1+'_'+p2).html(res);
 
-$$('#'+seleccionado).text(valorCelda);
-
+};
 //asignarlo a la celda del id asignado a "seleccionado"
-
 
 //llamar a funcion calcularTotal(jugador) pasandole la columna de jugador con p2
 // aca iria el for que pasa por los p1 hasta las 11 celdas
 
-});
+
+/*
+function cambiarValor(idTomado,valor) {
+      // funcion global para cambiar el valor clickeado
+$$('#'+idTomado).text(valor);
+
+
+
+    };
+
+*/
 })
 
