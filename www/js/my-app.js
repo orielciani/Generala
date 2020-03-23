@@ -34,11 +34,11 @@ var mainView = app.views.create('.view-main');
     var dados4 = [4, 8, 12, 16, 20, "-", "X"];
     var dados5 = [5, 10, 15, 20, 25, "-", "X"];
     var dados6 = [6, 12, 18, 24, 30, "-", "X"];
-    var dadosEscalera = [20, 25, "-", "X"];
-    var dadosFull = [30, 35, "-", "X"];
-    var dadosPoker = [40, 45, "-", "X"];
-    var dadosGenerala = [50, 55, "-", "X"];
-    var dadosDoblegenerala = [100, 105, "-", "X"];
+    var dados7 = [20, 25, "-", "X"];
+    var dados8 = [30, 35, "-", "X"];
+    var dados9 = [40, 45, "-", "X"];
+    var dados10 = [50, 55, "-", "X"];
+    var dados11 = [100, 105, "-", "X"];
 
 
 // Handle Cordova Device Ready Event
@@ -56,48 +56,64 @@ $$(document).on('page:init', function (e) {
 $$(document).on('page:init', '.page[data-name="about"]', function (e) {
     // Do something here when page with data-name="about" attribute loaded and initialized
     console.log(e);
-    alert(dadosDoblegenerala[1]);
+    alert(dados11[1]);
     if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
     if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
-    // Vertical Buttons
-
-// aca termina el Dialog
-$$("#popover1").on("click", function() {popover(0)});
-$$("#popover2").on("click", function() {popover(1)});
-$$("#popover3").on("click", function() {popover(2)});
-$$("#popover4").on("click", function() {popover(3)});
-$$("#popover5").on("click", function() {popover(4)});
-$$("#popover6").on("click", function() {popover(5)});
-$$("#popover7").on("click", function() {popover(6)});
-function popover(n) {
-  $$("#d2_1").text(dados2[n])
-}
 // aca termina el popover1
-$$("#1popover").on("click", function() {popover2(0)});
-$$("#2popover").on("click", function() {popover2(1)});
-$$("#3popover").on("click", function() {popover2(2)});
-$$("#4popover").on("click", function() {popover2(3)});
-$$("#5popover").on("click", function() {popover2(4)});
-$$("#6popover").on("click", function() {popover2(5)});
-$$("#7popover").on("click", function() {popover2(6)});
-// DOM events for About popover
-$$('.popover-popover2').on('popover:open', function (e) {
-  });
-$$('.tocaBoton').on("click", function () { 
+// Create dynamic Popover
+$$(".dynamic-popover").on("click", function () {
     idDelBoton = this.id;
     var partes = idDelBoton.split("_");
-    p0 = partes[1];
-    p1 = partes[2];
-    console.log(p0);
-    console.log(p1);});
+    p0 = partes[0];
+    p1 = partes[1];
+    p2 = partes[2];
+var dynamicPopover = app.popover.create({
+  targetEl: 'a.dynamic-popover',
+  
+  // Events
+  on: {
+    open: function (popover) {
+      console.log('Popover open');
 
-$$('.popover-popover2').on('popover:opened', function (e) {  });
-  function popover2(n) {
-    console.log(p0);
-    console.log(p1);
-  $$("#d_" + p0 + "_" + p1).text("dados"+ p0 +"[n]");
-}
-//
+    },
+    opened: function (popover) {
+      console.log('Popover opened');
+    },
+  },
+  content: '<div class="popover">'+
+              '<div class="popover-inner">'+
+                '<div class="block">'+
+                  '<p>Puntaje:' + partes[1] + '</p>'+
+              '<div class="row">'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="1popover">1</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="2popover">2</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="3popover">3</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="4popover">4</button></div>'+
+              '</div>'+
+              '<div class="row">'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="5popover">5</button></div>'+
+                '<div class="col-25"><button class="col button button-fill button-round" id="6popover">-</button></div>'+
+                '<div class="col-50"><button class="col button button-fill button-round" id="7popover">Tachar</button></div>'+
+              '</div>'+
+            '</div></div>'+
+                  '<p><a href="#" class="link popover-close">Close me</a></p>'+
+                '</div>'+
+              '</div>'+
+            '</div>',
+});
+// Events also can be assigned on instance later
+dynamicPopover.on('close', function (popover) {
+  console.log('Popover close');
+});
+dynamicPopover.on('closed', function (popover) {
+  console.log('Popover closed');
+});
+
+// Open dynamic popover
+$$('.dynamic-popover').on('click', function () {
+  dynamicPopover.open();
+});})
+
 
 
 
