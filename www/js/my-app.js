@@ -34,12 +34,15 @@ var mainView = app.views.create('.view-main');
     var dados4 = [4, 8, 12, 16, 20, "-", "X"];
     var dados5 = [5, 10, 15, 20, 25, "-", "X"];
     var dados6 = [6, 12, 18, 24, 30, "-", "X"];
-    var dados7 = [20, 25, "-", "X"];
-    var dados8 = [30, 35, "-", "X"];
-    var dados9 = [40, 45, "-", "X"];
-    var dados10 = [50, 55, "-", "X"];
-    var dados11 = [100, 105, "-", "X"];
+    var dadosEscalera = [20, 25, "-", "X"];
+    var dadosFull = [30, 35, "-", "X"];
+    var dadosPoker = [40, 45, "-", "X"];
+    var dadosGenerala = [50, 55, "-", "X"];
+    var dadosDoblegenerala = [100, 105, "-", "X"];
 
+// DOM events for About popover
+$$('.popover-popover2').on('popover:open', function (e) {  });
+$$('.popover-popover2').on('popover:opened', function (e) {  });
 
 // Handle Cordova Device Ready Event
 $$(document).on('deviceready', function() {
@@ -51,105 +54,79 @@ $$(document).on('deviceready', function() {
 $$(document).on('page:init', function (e) {
     // Do something here when page loaded and initialized
     console.log(e);
-});
-// Option 2. Using live 'page:init' event handlers for each page
-$$(document).on('page:init', '.page[data-name="anotador"]', function (e) {
-    // Do something here when page with data-name="about" attribute loaded and initialized
-    console.log(e);
-    alert(dados11[1]);
-    if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
-    if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
+})
+// aca termina el Dialog
+$$("#popover1").on("click", function() {popover(0)});
+$$("#popover2").on("click", function() {popover(1)});
+$$("#popover3").on("click", function() {popover(2)});
+$$("#popover4").on("click", function() {popover(3)});
+$$("#popover5").on("click", function() {popover(4)});
+$$("#popover6").on("click", function() {popover(5)});
+$$("#popover7").on("click", function() {popover(6)});
+function popover(n) {
+  $$("#d2_1").text(dados2[n])
+}
 // aca termina el popover1
-// Create dynamic Popover
-var dynamicPopover;
-$$(".dynamic-popover").on("click", function () {
-    idDelBoton = this.id;
-    var partes = idDelBoton.split("_");
-    p0 = partes[0];
-    p1 = partes[1];
-    p2 = partes[2];
-    if (partes[1] <= 6) {
- dynamicPopover = app.popover.create({
-  targetEl: 'a.dynamic-popover',
+$$("#1popover").on("click", function() {popover2(0)});
+$$("#2popover").on("click", function() {popover2(1)});
+$$("#3popover").on("click", function() {popover2(2)});
+$$("#4popover").on("click", function() {popover2(3)});
+$$("#5popover").on("click", function() {popover2(4)});
+$$("#6popover").on("click", function() {popover2(5)});
+$$("#7popover").on("click", function() {popover2(6)});
+function popover2(n) {
+  $$("#d3_1").text(dados3[n]);
   
-  // Events
-  on: {
-    open: function (popover) {
-      console.log('Popover open');
-
-    },
-    opened: function (popover) {
-      console.log('Popover opened');
-    },
-  },
-  content: '<div class="popover">'+
-              '<div class="popover-inner">'+
-                '<div class="block">'+
-                  '<p>Puntaje:</p>'+
-              '<div class="row">'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[0] +'</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[1] +'</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[2] +'</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[3] +'</button></div>'+
-              '</div>'+
-              '<div class="row">'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[4] +'</button></div>'+
-                '<div class="col-25"><button class="col button button-fill button-round">' + dados1[5] +'</button></div>'+
-                '<div class="col-50"><button class="col button button-fill button-round">' + dados1[6] +'</button></div>'+
-              '</div>'+
-            '</div></div>'+
-                  '<p><a href="#" class="link popover-close">Close me</a></p>'+
-                '</div>'+
-              '</div>'+
-            '</div>',
-});} else {
-  dynamicPopover = app.popover.create({
-    targetEl: 'a.dynamic-popover',
-    
-    // Events
-    on: {
-      open: function (popover) {
-        console.log('Popover open');
-  
-      },
-      opened: function (popover) {
-        console.log('Popover opened');
-      },
-    },
-    content: '<div class="popover">'+
-                '<div class="popover-inner">'+
-                  '<div class="block">'+
-                    '<p>Puntaje:</p>'+
-                '<div class="row">'+
-                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[0] +'</button></div>'+
-                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[1] +'</button></div>'+
-                '</div>'+
-                '<div class="row">'+
-                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[2] +'</button></div>'+
-                  '<div class="col-50"><button class="col button button-fill button-round">' + dados1[3] +'</button></div>'+
-                '</div>'+
-              '</div></div>'+
-                    '<p><a href="#" class="link popover-close">Close me</a></p>'+
-                  '</div>'+
-                '</div>'+
-              '</div>',
-  });
-
 }
 
-// Events also can be assigned on instance later
-dynamicPopover.on('close', function (popover) {
-  console.log('Popover close');
-});
-dynamicPopover.on('closed', function (popover) {
-  console.log('Popover closed');
-});
 
-// Open dynamic popover
-$$('.dynamic-popover').on('click', function () {
-  dynamicPopover.open();
-});}) 
-
+// Option 2. Using live 'page:init' event handlers for each page
+$$(document).on('page:init', '.page[data-name="about"]', function (e) {
+    // Do something here when page with data-name="about" attribute loaded and initialized
+    console.log(e);
+    alert(dadosDoblegenerala[1]);
+    if($$("#J1").val() == "") {$$('#Jugador1').text("Jugador 1")} else {$$('#Jugador1').text($$("#J1").val());}
+    if($$("#J2").val() == "") {$$('#Jugador2').text("Jugador 2")} else {$$('#Jugador2').text($$("#J2").val());}
+    // Vertical Buttons
+var ac6 = app.actions.create({
+  grid: true,
+  buttons: [
+    [
+      {
+        text: 'Button 1',
+        onClick: function () {
+        $$("#d1_1").text(dados1[0])
+              }
+      },
+      {
+        text: 'Button 2',
+        onClick: function () {
+        $$("#d1_1").text(dados1[1])
+              }
+      },
+      {
+        text: 'Button 3',
+        onClick: function () {
+        $$("#d1_1").text(dados1[2])
+              }
+      },
+    ],
+    [
+      {
+        text: 'Button 4',
+      },
+      {
+        text: 'Button 5',
+      },
+      {
+        text: 'Button 6',
+      },
+    ]
+  ],
+});
+$$('.ac-6').on('click', function () {
+    ac6.open();
+});
 
 
 

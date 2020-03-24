@@ -4,3 +4,22 @@
 }
 
 /* Your app custom styles here */
+
+.wd100{
+	width: 100%;
+	
+}
+.pd0{
+	padding: 0 !important ;
+}
+.nofondo{
+	background: none !important;
+	border: none !important;
+}
+.pantalla{
+	width: 100vw;
+	height: 88vh;
+}
+.h-btn{
+	height: 6.1vh !important;
+}
