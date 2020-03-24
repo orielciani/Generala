@@ -25,7 +25,6 @@ $$(document).on('deviceready', function() {
     console.log("Device is ready!");
 });
 
-
 // Option 1. Using one 'page:init' handler for all pages
 $$(document).on('page:init', function (e) {
     // Do something here when page loaded and initialized
@@ -50,7 +49,7 @@ $$('#popover5').on('click',function(){popSeleccion(5); app.popover.close();});
 $$('#popover6').on('click',function(){popSeleccion("-"); app.popover.close();});
 $$('#popover7').on('click',function(){popSeleccion("X"); app.popover.close();});
 
-$$('#servido').on('click',function(){popSeleccion("s"); console.log(popSeleccion); app.popover.close();});
+$$('#servido').on('click',function(){popSeleccion("s"); app.popover.close();});
 $$('#noServido').on('click',function(){popSeleccion("ns"); app.popover.close();});
 $$('#juegoCancela').on('click',function(){popSeleccion("-"); app.popover.close();});
 $$('#juegoAnula').on('click',function(){popSeleccion("X"); app.popover.close();});
@@ -61,24 +60,20 @@ $$('#juegoAnula').on('click',function(){popSeleccion("X"); app.popover.close();}
 
 $$('.valor').on('click',function(){
 var seleccionado = $$(this).attr('id');
-console.log(seleccionado);
     var partes = seleccionado.split("_");
 
     // sabiendo la forma: d_1_1 puedo tener:
    var p0 = partes[0];
     p1 = partes[1];
     p2 = partes[2];
-console.log("celda"+" - "+p1+" jugador "+p2);
-
 });
 
 function popSeleccion(selecPop){
 // calcular el valor que se pone segun la celda seleccionada
 var valorCelda;
 var res;
-console.log(p1);
-console.log(p2);
-console.log(selecPop);
+
+if(p1<=6){
 
 if(p1 == "1"){
 res = selecPop;
@@ -92,27 +87,69 @@ res = selecPop;
   res = selecPop*5;
 }else if(p1 == "6"){
   res = selecPop*6;
-}else {};
-console.log('#d_'+p1+"_"+p2);
-console.log(res);
-$$('#d_'+p1+'_'+p2).html(res);
+}
+
+if (selecPop == "X"){
+res = "X";
+}else if (selecPop == "-") {
+  res = "-";
+}
+
+$$('#d_'+p1+'_'+p2).html('<a class="link popover-open" href="#" data-popover=".popover-links">'+res+'</a>');
+}else{
+
+if(p1 == "7"){
+  res =20;
+}else if(p1 == "8"){
+  res =30;
+}else if(p1 == "9"){
+  res =40;
+}else if(p1 == "10"){
+  res =60;
+}else if(p1 == "11"){
+  res =100;
+}
+
+if (selecPop == "X"){
+res = "X";
+}else if (selecPop == "-") {
+  res = "-";
+}else if (selecPop == "ns") {
+  res += 0;
+}else if (selecPop == "s") {
+  res += 5;
+}
+
+$$('#d_'+p1+'_'+p2).html('<a class="link popover-open" href="#" data-popover=".popover-juegos">'+res+'</a>');
+}
+
+
+//llamar a funcion calcularTotal()
+calcularTotal();
+};
+// aca va el for que pasa por los p1 hasta las 11 celdas
+function calcularTotal(){
+var totalJugador1 = 0;
+var totalJugador2 = 0;
+
+for (var i = 1; i <= 11; i++) {
+var valor1 = $$('#d_'+i+'_1>a').text();
+var valor2 = $$('#d_'+i+'_2>a').text();
+if(valor1 == "X" || valor1 == "-"){  
+}else{
+totalJugador1 += parseInt(valor1);
+}
+
+if(valor2 == "X" || valor2 == "-"){  
+}else{
+totalJugador2 += parseInt(valor2);
+}
+
+}
+
+$$('#total1').text(totalJugador1);
+$$('#total2').text(totalJugador2);
 
 };
-//asignarlo a la celda del id asignado a "seleccionado"
 
-//llamar a funcion calcularTotal(jugador) pasandole la columna de jugador con p2
-// aca iria el for que pasa por los p1 hasta las 11 celdas
-
-
-/*
-function cambiarValor(idTomado,valor) {
-      // funcion global para cambiar el valor clickeado
-$$('#'+idTomado).text(valor);
-
-
-
-    };
-
-*/
 })
-
