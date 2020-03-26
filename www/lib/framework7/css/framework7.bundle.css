@@ -5278,7 +5278,7 @@ button {
   line-height: calc(var(--f7-button-height) - var(--f7-button-border-width, 0) * 2);
   padding: var(--f7-button-padding-vertical, 0px) var(--f7-button-padding-horizontal);
   border-radius: var(--f7-button-border-radius);
-  min-width: var(--f7-button-min-width);
+  min-width: 32px;
   font-weight: var(--f7-button-font-weight);
   letter-spacing: var(--f7-button-letter-spacing);
   text-transform: var(--f7-button-text-transform);
@@ -15037,8 +15037,8 @@ label.item-radio.disabled,
   --f7-table-footer-font-size: 12px;
   --f7-table-input-height: 24px;
   --f7-table-input-font-size: 14px;
-  --f7-table-collapsible-cell-padding: 16px;
-  --f7-table-link-icon-only-icon-size: 20px;
+  --f7-table-collapsible-cell-padding: 0px;
+  --f7-table-link-icon-only-icon-size: 0px;
   --f7-table-sortable-icon-color: #000;
 }
 :root .theme-dark,
@@ -15053,9 +15053,9 @@ label.item-radio.disabled,
   --f7-table-head-icon-size: 18px;
   --f7-table-body-cell-height: 44px;
   --f7-table-cell-padding-vertical: 0px;
-  --f7-table-cell-padding-horizontal: 16px;
-  --f7-table-edge-cell-padding-horizontal: 16px;
-  --f7-table-label-cell-padding-horizontal: 16px;
+  --f7-table-cell-padding-horizontal: 0px;
+  --f7-table-edge-cell-padding-horizontal: 0px;
+  --f7-table-label-cell-padding-horizontal: 0px;
   --f7-table-checkbox-cell-width: 22px;
   /* --f7-table-actions-cell-link-color: var(--f7-theme-color); */
   /* --f7-table-actions-link-color: var(--f7-theme-color); */
@@ -15081,9 +15081,9 @@ label.item-radio.disabled,
   --f7-table-head-icon-size: 16px;
   --f7-table-body-cell-height: 40px;
   --f7-table-cell-padding-vertical: 0px;
-  --f7-table-cell-padding-horizontal: 28px;
-  --f7-table-edge-cell-padding-horizontal: 24px;
-  --f7-table-label-cell-padding-horizontal: 24px;
+  --f7-table-cell-padding-horizontal: 0px;
+  --f7-table-edge-cell-padding-horizontal: 0px;
+  --f7-table-label-cell-padding-horizontal: 0px;
   --f7-table-checkbox-cell-width: 18px;
   --f7-table-title-font-size: 20px;
   --f7-table-title-font-weight: 400;
@@ -15111,10 +15111,10 @@ label.item-radio.disabled,
   --f7-table-head-cell-height: 32px;
   --f7-table-head-icon-size: 18px;
   --f7-table-body-cell-height: 32px;
-  --f7-table-cell-padding-vertical: 5px;
-  --f7-table-cell-padding-horizontal: 10px;
-  --f7-table-edge-cell-padding-horizontal: 16px;
-  --f7-table-label-cell-padding-horizontal: 16px;
+  --f7-table-cell-padding-vertical: 0px;
+  --f7-table-cell-padding-horizontal: 0px;
+  --f7-table-edge-cell-padding-horizontal: 0px;
+  --f7-table-label-cell-padding-horizontal: 0px;
   --f7-table-checkbox-cell-width: 22px;
   /* --f7-table-actions-cell-link-color: var(--f7-theme-color); */
   /* --f7-table-actions-link-color: var(--f7-theme-color); */
@@ -15621,7 +15621,7 @@ table.data-table {
 .ios .data-table-actions a.link + a.link,
 .ios .data-table-links .button + .button,
 .ios .data-table-actions .button + .button {
-  margin-left: 16px;
+  margin-left: 0px;
 }
 .ios .data-table-actions a.link.icon-only {
   width: 44px;
@@ -15661,7 +15661,7 @@ table.data-table {
 .md .data-table-actions a.link + a.link,
 .md .data-table-links .button + .button,
 .md .data-table-actions .button + .button {
-  margin-left: 24px;
+  margin-left: 0px;
 }
 .md .data-table-actions a.link.icon-only {
   width: 24px;
@@ -15723,7 +15723,7 @@ table.data-table {
 .aurora .data-table-actions a.link + a.link,
 .aurora .data-table-links .button + .button,
 .aurora .data-table-actions .button + .button {
-  margin-left: 10px;
+  margin-left: 0px;
 }
 .aurora .data-table-rows-select a.link,
 .aurora .data-table-pagination a.link {
