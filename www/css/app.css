@@ -3,4 +3,17 @@
   height: 100vh;
 }
 
+<<<<<<< HEAD
 /* Your app custom styles here */
+=======
+/* Your app custom styles here */
+.tocaBoton {
+  width: 100px;
+  margin: 0px;
+  padding: 0px;
+}
+img{
+  display: block;
+  margin: auto;
+}
+>>>>>>> captura_id
